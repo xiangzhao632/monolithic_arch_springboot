@@ -1,6 +1,10 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+  push:
+    branches: [ "study_github_actions" ]
+  pull_request:
+    branches: [ "study_github_actions" ]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -11,3 +15,10 @@ jobs:
           node-version: '24'
       - run: npm install -g bats
       - run: bats -v
+      - name: Hello world action step
+        id: hello
+        uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
+        with:
+          who-to-greet: Mona the Octocat
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
