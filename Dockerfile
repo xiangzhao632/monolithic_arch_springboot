@@ -1,4 +1,4 @@
-FROM openjdk:12-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 MAINTAINER icyfenix
 
